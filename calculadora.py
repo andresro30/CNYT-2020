@@ -1,6 +1,8 @@
 from sys import stdin
+import math
+import unittest
 
-a = [3,5]
+a = [3,-5]
 b = [-6,-4]
 ans = [0,0]
 
@@ -46,6 +48,24 @@ def modulo(a):
     temp = a[0]**2 + a[1]**2
     ans[0] = temp**(1/2)
 
+def conjugado(a):
+    ans[0] = a[0]
+    ans[1] = a[1]*-1    
+
+def polarCartesiano(a):
+    #Los angulos estan en radianes
+    r = a[0]
+    ang = a[1]
+    ans[0] = r*(math.cos(ang))
+    ans[1] = r*(math.sin(ang))
+
+def cartesianoPolar(a):
+    ans[0] = (a[0]**2 + a[1]**2)**(1/2)
+    ans[1] = math.atan(a[1]/a[0])
+
+def fase(a):
+    ans[0] = math.atan2(a[1],a[0])
+    
 def prettyPrinting(c):
     if(c[1]==0):
         print(c[0])
@@ -66,6 +86,9 @@ def main():
     #suma(a,b)
     #multiplicacion(a,b)
     #division(a,b)
-    modulo(a)
+    #modulo(a)
+    #conjugado(a)
+    #polarCartesiano(2,120)
+    fase([1.2,-1.5])
     prettyPrinting(ans)
 main()
