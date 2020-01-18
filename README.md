@@ -1,5 +1,6 @@
 # Librería de Números Complejos
 
+Proyecto de Ciencias Naturales y Tecnología 
 
 ## Intrucciones:
 Para representar los números complejos, la librería usa la estructura de una tupla, donde la primera posición  es 
@@ -23,7 +24,7 @@ La librearía de números complejos tiene las siguientes funciones:
 
 
 ## Autor:
-### Andrés Guillermo Rocha Méndez
-### Estudiante de Ingeniería de Sistemas
-### Escuela Colombiana de Ingeniería Julio Garavito
+_Andrés Guillermo Rocha Méndez_
+_Estudiante de Ingeniería de Sistemas_
+_Escuela Colombiana de Ingeniería Julio Garavito_
 
