@@ -80,7 +80,7 @@ def prettyPrinting(c):
             if(c[1]==1):
                 print("i")
             else:
-                print(round(c[1],2)+"i")
+                print(str(round(c[1],2))+"i")
 
 def radGrados(num):
     return (num/180)*math.pi
@@ -89,9 +89,13 @@ def gradRadi(num):
     return (num*180)/math.pi
 
 def main():
-    op = polarCartesiano((13,23))
-    prettyPrinting(fase((3,21)))
-    prettyPrinting(fase((6,-76)))
-    prettyPrinting(fase((5,16)))
+    op = polarCartesiano((2,30))
+    prettyPrinting(op)
+##    j=1
+##    c= (0,2)
+##    while j<=6:
+##        c = multiplicacion(c,(0,2))
+##        j+=1
+##    prettyPrinting(c)
 
 main()

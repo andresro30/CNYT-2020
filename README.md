@@ -24,7 +24,7 @@ La librearía de números complejos tiene las siguientes funciones:
 
 
 ## Autor:
-_Andrés Guillermo Rocha Méndez_
-_Estudiante de Ingeniería de Sistemas_
-_Escuela Colombiana de Ingeniería Julio Garavito_
+>Andrés Guillermo Rocha Méndez
+>Estudiante de Ingeniería de Sistemas
+>Escuela Colombiana de Ingeniería Julio Garavito
 
