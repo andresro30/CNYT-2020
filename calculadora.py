@@ -3,6 +3,8 @@ import math
 import unittest
 
 
+""" Números complejos """
+
 def suma(a,b):
     v1 = a[0]+b[0]
     v2 = a[1]+b[1]
@@ -65,7 +67,73 @@ def cartesianoPolar(a):
 def fase(a):
     v1 = math.atan2(a[1],a[0])
     return (v1,"")
-    
+
+
+""" Operaciones con Vectores y Matrices complejas"""
+
+def verificarTipo(a,b):
+    if(type(a)==tuple):
+        return (a,b)
+    else:
+        return (b,a)
+
+
+def sumaVectores(a,b):
+    ans = [0]*len(a)
+    if(len(a)!=len(b)):
+        return "Las dimensiones de los vectores no son iguales"
+    else:
+        for i in range(len(a)):
+            ans[i] = suma(a[i],b[i])
+        return ans
+
+def inversaVector(a):
+    ans = [0]*len(a)
+    for i in range(len(a)):
+        ans[i] = (-1*(a[i][0]),-1*(a[i][1]))
+    return ans
+
+def multiplicacionVectores(a,b):
+    c = verificarTipo(a,b)[0]
+    v = verificarTipo(a,b)[1]
+    ans = [0]*len(v)
+    for i in range(len(v)):
+        ans[i] = multiplicacion(c,v[i])
+    return ans
+
+def sumaMatrices(a,b):
+    ans = [0]*len(a)
+    if(len(a)!=len(b)):
+        return "Las dimensiones de los vectores no son iguales"
+    else:
+        for i in range(len(a)):
+            if(len(a[i])!=len(b[i])):
+               return "Las dimensiones de los vectores no son iguales"
+            else:
+                ans[i] = sumaVectores(a[i],b[i])
+        return ans
+
+def inversaMatriz(a):
+    ans = [0]*len(a)
+    for i in range(len(a)):
+        ans[i] = inversaVector(a[i])
+    return ans
+
+def multiplicacionMatrices(a,b):
+    c = verificarTipo(a,b)[0]
+    m = verificarTipo(a,b)[1]
+    ans = [0]*len(a)    
+    for i in range(len(m)):
+        ans[i] = multiplicacionVectores(c,m[i])
+    return ans
+
+def traspuesta(a):
+    ans = [[0]*len(a)]*len(a)
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            ans[i][j] = a[j][i]
+    return ans
+ 
 def prettyPrinting(c):
     if(c[1]==""):
         print(round(c[0],2))
@@ -89,13 +157,14 @@ def gradRadi(num):
     return (num*180)/math.pi
 
 def main():
-    op = polarCartesiano((2,30))
+    #op = sumaVectores([(1,2),(1,2),(3,5)],[(-2,2),(2,2),(4,10)])
+    #op = multiplicacionVectores([(1,2),(3,4),(1,5)],(0,0))
+    #op = multiplicacionVectores((1,1),[(1,2),(3,4),(1,5)])
+    #op = sumaMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],[[(1,0),(1,0)],[(1,0),(1,0)]])
+    #op = inversaMatriz([[(1,1),(2,-3)],[(4,2),(2,4)]])
+    #op = multiplicacionMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],(1,1))
+    op = traspuesta([[(1,1),(2,-3)],[(4,2),(2,4)]])
+    print(op)
     prettyPrinting(op)
-##    j=1
-##    c= (0,2)
-##    while j<=6:
-##        c = multiplicacion(c,(0,2))
-##        j+=1
-##    prettyPrinting(c)
-
+    
 main()
