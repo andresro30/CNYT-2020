@@ -128,10 +128,20 @@ def multiplicacionMatrices(a,b):
     return ans
 
 def traspuesta(a):
-    ans = [[0]*len(a)]*len(a)
+    ans = [[0]*len(a[0])]*len(a)
+    print(ans)
     for i in range(len(a)):
         for j in range(len(a[i])):
+            print(i,j)
             ans[i][j] = a[j][i]
+    return ans
+
+def conjugadoMatriz(a):
+    ans = [[0]*len(a[0])]*len(a)
+    print(ans)
+    for i in range(len(a)):
+        for j in range(len(a[i])):
+            ans[i][j] = conjugado(a[i][j])
     return ans
  
 def prettyPrinting(c):
@@ -163,8 +173,10 @@ def main():
     #op = sumaMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],[[(1,0),(1,0)],[(1,0),(1,0)]])
     #op = inversaMatriz([[(1,1),(2,-3)],[(4,2),(2,4)]])
     #op = multiplicacionMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],(1,1))
-    op = traspuesta([[(1,1),(2,-3)],[(4,2),(2,4)]])
+    #op = traspuesta([[(1,1),(2,-3)],[(4,2),(2,4)]])
+    #op = conjugadoMatriz([[(1,2),(2,1)],[(1,-2),(2,-3)],[(3,4),(3,-1)]])
+    op = conjugadoMatriz([[(1,1),(2,2)],[(1,1),(2,2)]])
     print(op)
     prettyPrinting(op)
-    
+
 main()
