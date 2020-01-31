@@ -128,21 +128,28 @@ def multiplicacionMatrices(a,b):
     return ans
 
 def traspuesta(a):
-    ans = [[0]*len(a[0])]*len(a)
-    print(ans)
-    for i in range(len(a)):
-        for j in range(len(a[i])):
-            print(i,j)
-            ans[i][j] = a[j][i]
+    ans = []
+    for i in range(len(a[0])):
+        ans.append([])
+        for j in range(len(a)):
+            ans[i].append(a[j][i])
     return ans
 
+
 def conjugadoMatriz(a):
-    ans = [[0]*len(a[0])]*len(a)
-    print(ans)
+    ans = []
     for i in range(len(a)):
-        for j in range(len(a[i])):
-            ans[i][j] = conjugado(a[i][j])
+        ans.append([])
+        for j in range(len(a[0])):
+            ans[i].append(conjugado(a[i][j]))
     return ans
+    
+
+def matrizAdjunta(a):
+    ans = traspuesta(a)
+    ans = conjugadoMatriz(ans)
+    return ans 
+    
  
 def prettyPrinting(c):
     if(c[1]==""):
@@ -174,8 +181,10 @@ def main():
     #op = inversaMatriz([[(1,1),(2,-3)],[(4,2),(2,4)]])
     #op = multiplicacionMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],(1,1))
     #op = traspuesta([[(1,1),(2,-3)],[(4,2),(2,4)]])
+    #op = traspuesta([[(1,1),(2,-3),(5,4)],[(4,2),(2,4),(4,5)]])
     #op = conjugadoMatriz([[(1,2),(2,1)],[(1,-2),(2,-3)],[(3,4),(3,-1)]])
-    op = conjugadoMatriz([[(1,1),(2,2)],[(1,1),(2,2)]])
+    #op = conjugadoMatriz([[(1,1),(2,2),(1,1)],[(2,2),(3,-3),(2,3)]])
+    op = matrizAdjunta([[(1,1),(2,-3)],[(4,2),(2,4)]])
     print(op)
     prettyPrinting(op)
 
