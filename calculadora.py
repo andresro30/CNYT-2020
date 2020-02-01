@@ -77,6 +77,12 @@ def verificarTipo(a,b):
     else:
         return (b,a)
 
+def diferenciaVectMatriz(a,b):
+    if(type(a[0])==tuple):
+        return (a,b)
+    else:
+        return (b,a)
+
 
 def sumaVectores(a,b):
     ans = [0]*len(a)
@@ -148,7 +154,27 @@ def conjugadoMatriz(a):
 def matrizAdjunta(a):
     ans = traspuesta(a)
     ans = conjugadoMatriz(ans)
-    return ans 
+    return ans
+
+""" Función que multiplica dos vectores y suma sus componentes,
+    apoya la funcion de productoVectorMatriz"""
+
+def multiVectores(a,b):
+    ans = (0,0) 
+    for i in range(len(a)):
+        ans = suma(ans,multiplicacion(a[i],b[i]))
+    return ans  
+
+def productoVectorMatriz(a,b):
+    vec = diferenciaVectMatriz(a,b)[0]
+    ma = diferenciaVectMatriz(a,b)[1]
+    if(len(ma[0])!=len(vec)):
+        return "Las dimension de la matriz o del vector es incorrecta"
+    else:
+        ans = []
+        for i in range(len(ma)):
+            ans.append(multiVectores(vec,ma[i]))
+        return ans
     
  
 def prettyPrinting(c):
@@ -184,7 +210,8 @@ def main():
     #op = traspuesta([[(1,1),(2,-3),(5,4)],[(4,2),(2,4),(4,5)]])
     #op = conjugadoMatriz([[(1,2),(2,1)],[(1,-2),(2,-3)],[(3,4),(3,-1)]])
     #op = conjugadoMatriz([[(1,1),(2,2),(1,1)],[(2,2),(3,-3),(2,3)]])
-    op = matrizAdjunta([[(1,1),(2,-3)],[(4,2),(2,4)]])
+    #op = matrizAdjunta([[(1,1),(2,-3)],[(4,2),(2,4)]])
+    op = productoVectorMatriz([(1,1),(2,3)],[[(1,2),(2,1)],[(3,3),(1,-2)]])
     print(op)
     prettyPrinting(op)
 
