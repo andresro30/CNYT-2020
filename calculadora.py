@@ -69,7 +69,10 @@ def fase(a):
     return (v1,"")
 
 
-""" Operaciones con Vectores y Matrices complejas"""
+
+
+""" Funciones de apoyo para operaciones con Vectores y matrices """
+
 
 def verificarTipo(a,b):
     if(type(a)==tuple):
@@ -83,6 +86,16 @@ def diferenciaVectMatriz(a,b):
     else:
         return (b,a)
 
+def filtrar(a,b):
+    if(type(a[0])==list and type(b[0])==list):
+        return (a,b)
+    elif(type(a[0])!=list and type(b[0])==list):
+        return ([a],b)
+    elif(type(a[0])==list and type(b[0])!=list):
+        return (a,[b])
+
+
+""" Operaciones con Vectores y Matrices complejas"""
 
 def sumaVectores(a,b):
     ans = [0]*len(a)
@@ -142,12 +155,16 @@ def traspuesta(a):
     return ans
 
 
+def conjugadoVector(a):
+    ans = [0]*len(a)
+    for i in range(len(a)):
+        ans[i] = conjugado(a[i])
+    return ans 
+
 def conjugadoMatriz(a):
     ans = []
     for i in range(len(a)):
-        ans.append([])
-        for j in range(len(a[0])):
-            ans[i].append(conjugado(a[i][j]))
+        ans.append(conjugadoVector(a[i]))
     return ans
     
 
@@ -175,7 +192,46 @@ def productoVectorMatriz(a,b):
         for i in range(len(ma)):
             ans.append(multiVectores(vec,ma[i]))
         return ans
+
+
+def productoInternoVectores(a,b):
+    v1 = conjugadoVector(a)
+    return multiVectores(v1,b)
+
+
+
+#Norma de una matriz
+#def normaMatriz(a):
+
+#Distancia entre vectores
+#def distanciaVectores(a,b):
+
+#Es una matriz unitaria
+#def esUnitaria(a):
+
+#Es una matriz hermitiana
+#def esHermitiana(a):
+
+
+def productoTensorVectores(a,b):
+    ans = []
+    for i in range(len(a)):
+        for j in range(len(b)):
+            ans.append(multiplicacion(a[i],b[j]))
+    return ans 
     
+   
+def productoTensorMatrices(a,b):
+    a = filtrar(a,b)[0]
+    b = filtrar(a,b)[1]
+    ans = []
+    for i in range(len(a)):
+        for j in range(len(b)):
+            ans.append(productoTensorVectores(a[i],b[j]))
+    return ans
+
+
+
  
 def prettyPrinting(c):
     if(c[1]==""):
@@ -211,7 +267,15 @@ def main():
     #op = conjugadoMatriz([[(1,2),(2,1)],[(1,-2),(2,-3)],[(3,4),(3,-1)]])
     #op = conjugadoMatriz([[(1,1),(2,2),(1,1)],[(2,2),(3,-3),(2,3)]])
     #op = matrizAdjunta([[(1,1),(2,-3)],[(4,2),(2,4)]])
-    op = productoVectorMatriz([(1,1),(2,3)],[[(1,2),(2,1)],[(3,3),(1,-2)]])
+    #op = productoVectorMatriz([(1,1),(2,3)],[[(1,2),(2,1)],[(3,3),(1,-2)]])
+    #op = conjugadoVector([(1,2),(1,-2),(1,5)])
+    #op = productoInternoVectores([(1,0),(0,1),(1,-3)],[(2,1),(0,1),(2,0)])
+    
+    #op = productoTensorVectores([(-1,0),(2,0),(5,0)],[(4,0),(-3,0)])
+    #op = productoTensorVectores([(-1,1),(2,-1),(5,1)],[(4,1),(3,0)])
+
+    op = productoTensorMatrices([[(1,0),(2,0)],[(0,0),(1,0)]],[[(3,0),(2,0)],[(-1,0),(0,0)]])
+    op = productoTensorMatrices([(0,0),(0,0)],[[(1,0),(2,0)],[(3,0),(2,0)],[(1,1),(2,2)]])
     print(op)
     prettyPrinting(op)
 
