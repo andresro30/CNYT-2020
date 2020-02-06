@@ -138,7 +138,7 @@ def inversaMatriz(a):
         ans[i] = inversaVector(a[i])
     return ans
 
-def multiplicacionMatrices(a,b):
+def multiplicacionEscalarMatrices(a,b):
     c = verificarTipo(a,b)[0]
     m = verificarTipo(a,b)[1]
     ans = [0]*len(a)    
@@ -181,6 +181,21 @@ def multiVectores(a,b):
     for i in range(len(a)):
         ans = suma(ans,multiplicacion(a[i],b[i]))
     return ans  
+
+
+""" Funcion que multiplica dos matrices """
+def multiplicarMatrices(a,b):
+    ans = []
+    for i in range(len(a)):
+       fila = []
+       for j in range(len(b[0])):
+           temp = (0,0)
+           for k in range(len(b)):
+               mult = multiplicacion(a[i][k],b[k][j])
+               temp = suma(mult,temp)
+           fila.append(temp)
+       ans.append(fila)
+    return ans
 
 def productoVectorMatriz(a,b):
     vec = diferenciaVectMatriz(a,b)[0]
@@ -261,7 +276,7 @@ def main():
     #op = multiplicacionVectores((1,1),[(1,2),(3,4),(1,5)])
     #op = sumaMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],[[(1,0),(1,0)],[(1,0),(1,0)]])
     #op = inversaMatriz([[(1,1),(2,-3)],[(4,2),(2,4)]])
-    #op = multiplicacionMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],(1,1))
+    #op = multiplicacionEscalarMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],(1,1))
     #op = traspuesta([[(1,1),(2,-3)],[(4,2),(2,4)]])
     #op = traspuesta([[(1,1),(2,-3),(5,4)],[(4,2),(2,4),(4,5)]])
     #op = conjugadoMatriz([[(1,2),(2,1)],[(1,-2),(2,-3)],[(3,4),(3,-1)]])
@@ -274,8 +289,11 @@ def main():
     #op = productoTensorVectores([(-1,0),(2,0),(5,0)],[(4,0),(-3,0)])
     #op = productoTensorVectores([(-1,1),(2,-1),(5,1)],[(4,1),(3,0)])
 
-    op = productoTensorMatrices([[(1,0),(2,0)],[(0,0),(1,0)]],[[(3,0),(2,0)],[(-1,0),(0,0)]])
-    op = productoTensorMatrices([(0,0),(0,0)],[[(1,0),(2,0)],[(3,0),(2,0)],[(1,1),(2,2)]])
+    #op = productoTensorMatrices([[(1,0),(2,0)],[(0,0),(1,0)]],[[(3,0),(2,0)],[(-1,0),(0,0)]])
+    #op = productoTensorMatrices([(0,0),(0,0)],[[(1,0),(2,0)],[(3,0),(2,0)],[(1,1),(2,2)]])
+    #op = multiplicarMatrices([[(1,0),(1,0)],[(1,0),(0,0)]],[[(1,0),(0,0)],[(0,0),(1,0)]])
+    #op = multiplicarMatrices([[(1,0),(1,0)],[(3,0),(2,0)]],[[(1,0),(4,0)],[(0,0),(5,0)]])
+
     print(op)
     prettyPrinting(op)
 

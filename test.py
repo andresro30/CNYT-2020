@@ -53,7 +53,28 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(calculadora.fase((6,-76))[0],-1.492012365805753)
         self.assertEqual(calculadora.fase((5,16))[0],1.2679114584199251)
 
+
+    """ Operaciones de Vectores y Matrices Complejas"""
     
+
+    def simulacionQuantica(self):
+        r2 = math.sqrt(2)
+        H = [[(r2,0),(r2,0)],[(r2,0),(r2*-1,0)]]
+        
+        X = [[(0,0),(1,0)],[(1,0),(0,0)]]
+        base = [(1,0),(0,0),(0,0),(0,0)]
+        M1 = productoTensorMatrices(H,H)
+        M2 = productoTensorMatrices(H,X)
+        M3 = multiplicarMatrices(M2,M1)
+
+        producto = multiplicarMatrices(M2,M1)
+        op = productoVectorMatriz(base,producto)
+        print(op)
+
+        
+        
+
+
         
 
 if __name__ == "__main__":
