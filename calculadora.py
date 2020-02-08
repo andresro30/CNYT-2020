@@ -221,11 +221,29 @@ def productoInternoVectores(a,b):
 #Distancia entre vectores
 #def distanciaVectores(a,b):
 
-#Es una matriz unitaria
-#def esUnitaria(a):
 
-#Es una matriz hermitiana
-#def esHermitiana(a):
+def esUnitaria(a):
+    adjunta = matrizAdjunta(a)
+    ans = multiplicarMatrices(a,adjunta)
+    for i in range(len(a)):
+        for j in range(len(a[0])):
+            num = ans[i][j]
+            if(i==j and (num[0]!=1 or num[1]!=0)):
+                return False
+            elif(i!=j and (num[0]!=0 or num[1]!=0)):
+                 return False
+    return True
+                
+    
+
+
+def esHermitiana(a):
+    adjunta = matrizAdjunta(a)
+    for i in range(len(a)):
+        for j in range(len(a[0])):
+            if(a[i][j]!=adjunta[i][j]):
+                return False
+    return True
 
 
 def productoTensorVectores(a,b):
@@ -270,7 +288,7 @@ def radGrados(num):
 def gradRadi(num):
     return (num*180)/math.pi
 
-def main():
+#def main():
     #op = sumaVectores([(1,2),(1,2),(3,5)],[(-2,2),(2,2),(4,10)])
     #op = multiplicacionVectores([(1,2),(3,4),(1,5)],(0,0))
     #op = multiplicacionVectores((1,1),[(1,2),(3,4),(1,5)])
@@ -293,8 +311,9 @@ def main():
     #op = productoTensorMatrices([(0,0),(0,0)],[[(1,0),(2,0)],[(3,0),(2,0)],[(1,1),(2,2)]])
     #op = multiplicarMatrices([[(1,0),(1,0)],[(1,0),(0,0)]],[[(1,0),(0,0)],[(0,0),(1,0)]])
     #op = multiplicarMatrices([[(1,0),(1,0)],[(3,0),(2,0)]],[[(1,0),(4,0)],[(0,0),(5,0)]])
+    
 
-    print(op)
-    prettyPrinting(op)
+    #prettyPrinting(op)
+    
 
-main()
+#main()

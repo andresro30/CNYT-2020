@@ -1,5 +1,6 @@
 import unittest
 import calculadora
+import math
 
 
 class TestCalculadora(unittest.TestCase):
@@ -55,27 +56,50 @@ class TestCalculadora(unittest.TestCase):
 
 
     """ Operaciones de Vectores y Matrices Complejas"""
+
+    #def test_sumaVectores(self):
+
+    #def test_inversaVector(self):
+
+    #def test_multiplicacionVectores(self):
+
+    #def test_sumaMatrices(self):
+
+    #def test_inversaMatriz(self):
+
+    #def multiplicacionEscalarMatrices(self):
+
+    #def test_traspuesta(self):
+
+    #def test_conjugadoVector(self):
+
+    #def test_conjugadoMatriz(self):
+
+    #def test_matrizAdjunta(self):
+
+    #def test_productoVectorMatriz(self):
+
+    #def test_productoInternoVectores(self):
+
+    #def test_normaMatriz(self):
+
+    #def test_distanciaVectores(self):
+
     
-
-    def simulacionQuantica(self):
-        r2 = math.sqrt(2)
-        H = [[(r2,0),(r2,0)],[(r2,0),(r2*-1,0)]]
+    def test_esUnitaria(self):
+        self.assertFalse(calculadora.esUnitaria([[(1,1),(0,0)],[(0,0),(1,-1)]]))
+        self.assertFalse(calculadora.esUnitaria([[(-1,0),(0,-1)],[(0,1),(1,0)]]))
+        self.assertTrue(calculadora.esUnitaria([[(0,0),(1,0)],[(1,0),(0,0)]]))
         
-        X = [[(0,0),(1,0)],[(1,0),(0,0)]]
-        base = [(1,0),(0,0),(0,0),(0,0)]
-        M1 = productoTensorMatrices(H,H)
-        M2 = productoTensorMatrices(H,X)
-        M3 = multiplicarMatrices(M2,M1)
+    def test_esHermitiana(self):
+        self.assertFalse(calculadora.esHermitiana([[(1,1),(0,0)],[(0,0),(1,-1)]]))
+        self.assertTrue(calculadora.esHermitiana([[(-1,0),(0,-1)],[(0,1),(1,0)]]))
+        self.assertTrue(calculadora.esUnitaria([[(0,0),(1,0)],[(1,0),(0,0)]]))
 
-        producto = multiplicarMatrices(M2,M1)
-        op = productoVectorMatriz(base,producto)
-        print(op)
+    #def test_productoTensorVectores(self):
 
-        
-        
+    #def test_productoTensorMatrices(self):
 
-
-        
 
 if __name__ == "__main__":
     unittest.main()
