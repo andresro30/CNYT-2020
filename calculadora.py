@@ -106,6 +106,15 @@ def sumaVectores(a,b):
             ans[i] = suma(a[i],b[i])
         return ans
 
+def restaVectores(a,b):
+    ans = [0]*len(a)
+    if(len(a)!=len(b)):
+        return "Las dimensiones de los vectores no son iguales"
+    else:
+        for i in range(len(a)):
+            ans[i] = resta(a[i],b[i])
+        return ans
+
 def inversaVector(a):
     ans = [0]*len(a)
     for i in range(len(a)):
@@ -214,12 +223,15 @@ def productoInternoVectores(a,b):
     return multiVectores(v1,b)
 
 
+def normaVector(a):
+    norma = productoInternoVectores(a,a)
+    return math.sqrt(norma[0])
+    
 
-#Norma de una matriz
-#def normaMatriz(a):
 
-#Distancia entre vectores
-#def distanciaVectores(a,b):
+def distanciaVectores(a,b):
+    resta = restaVectores(a,b)
+    return normaVector(resta)
 
 
 def esUnitaria(a):
@@ -263,8 +275,6 @@ def productoTensorMatrices(a,b):
             ans.append(productoTensorVectores(a[i],b[j]))
     return ans
 
-
-
  
 def prettyPrinting(c):
     if(c[1]==""):
@@ -288,32 +298,10 @@ def radGrados(num):
 def gradRadi(num):
     return (num*180)/math.pi
 
-#def main():
-    #op = sumaVectores([(1,2),(1,2),(3,5)],[(-2,2),(2,2),(4,10)])
-    #op = multiplicacionVectores([(1,2),(3,4),(1,5)],(0,0))
-    #op = multiplicacionVectores((1,1),[(1,2),(3,4),(1,5)])
-    #op = sumaMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],[[(1,0),(1,0)],[(1,0),(1,0)]])
-    #op = inversaMatriz([[(1,1),(2,-3)],[(4,2),(2,4)]])
-    #op = multiplicacionEscalarMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],(1,1))
-    #op = traspuesta([[(1,1),(2,-3)],[(4,2),(2,4)]])
-    #op = traspuesta([[(1,1),(2,-3),(5,4)],[(4,2),(2,4),(4,5)]])
-    #op = conjugadoMatriz([[(1,2),(2,1)],[(1,-2),(2,-3)],[(3,4),(3,-1)]])
-    #op = conjugadoMatriz([[(1,1),(2,2),(1,1)],[(2,2),(3,-3),(2,3)]])
-    #op = matrizAdjunta([[(1,1),(2,-3)],[(4,2),(2,4)]])
-    #op = productoVectorMatriz([(1,1),(2,3)],[[(1,2),(2,1)],[(3,3),(1,-2)]])
-    #op = conjugadoVector([(1,2),(1,-2),(1,5)])
-    #op = productoInternoVectores([(1,0),(0,1),(1,-3)],[(2,1),(0,1),(2,0)])
-    
-    #op = productoTensorVectores([(-1,0),(2,0),(5,0)],[(4,0),(-3,0)])
-    #op = productoTensorVectores([(-1,1),(2,-1),(5,1)],[(4,1),(3,0)])
 
-    #op = productoTensorMatrices([[(1,0),(2,0)],[(0,0),(1,0)]],[[(3,0),(2,0)],[(-1,0),(0,0)]])
-    #op = productoTensorMatrices([(0,0),(0,0)],[[(1,0),(2,0)],[(3,0),(2,0)],[(1,1),(2,2)]])
-    #op = multiplicarMatrices([[(1,0),(1,0)],[(1,0),(0,0)]],[[(1,0),(0,0)],[(0,0),(1,0)]])
-    #op = multiplicarMatrices([[(1,0),(1,0)],[(3,0),(2,0)]],[[(1,0),(4,0)],[(0,0),(5,0)]])
-    
+"""
+def main():        
+main()
+"""
 
-    #prettyPrinting(op)
-    
 
-#main()

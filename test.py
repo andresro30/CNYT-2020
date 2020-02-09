@@ -57,33 +57,91 @@ class TestCalculadora(unittest.TestCase):
 
     """ Operaciones de Vectores y Matrices Complejas"""
 
-    #def test_sumaVectores(self):
+    def test_sumaVectores(self):
+        ans1 = calculadora.sumaVectores([(1,2),(1,2),(3,5)],[(-2,2),(2,2),(4,10)])
+        ans2 = calculadora.sumaVectores([(1,0),(1,-2),(3,2)],[(2,2),(3,2),(4,5)])
+        self.assertEqual(ans1,[(-1,4),(3,4),(7,15)])
+        self.assertEqual(ans2,[(3,2),(4,0),(7,7)])
+        
+    def test_inversaVector(self):
+        ans1 = calculadora.inversaVector([(1,-1),(2,3),(-1,3)])
+        ans2 = calculadora.inversaVector([(1,2),(-3,3),(-1,3)])
+        self.assertEqual(ans1,[(-1,1),(-2,-3),(1,-3)])
+        self.assertEqual(ans2,[(-1,-2),(3,-3),(1,-3)])
+        
+    def test_multiplicacionVectores(self):
+        ans1 = calculadora.multiplicacionVectores([(1,2),(3,4),(1,5)],(0,0))
+        ans2 = calculadora.multiplicacionVectores((1,1),[(1,2),(3,4),(1,5)])
+        self.assertEqual(ans1,[(0,0),(0,0),(0,0)])
+        self.assertEqual(ans2,[(-1,3),(-1,7),(-4,6)])
 
-    #def test_inversaVector(self):
+    def test_sumaMatrices(self):
+        ans1 = calculadora.sumaMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],[[(1,0),(1,0)],[(1,0),(1,0)]])
+        ans2 = calculadora.sumaMatrices([[(1,3),(2,3)],[(1,3),(2,3)]],[[(1,0),(3,6)],[(1,0),(3,6)]])
+        self.assertEqual(ans1,[[(2,1),(3,-3)],[(5,2),(3,4)]])
+        self.assertEqual(ans2,[[(2,3),(5,9)],[(2,3),(5,9)]])
 
-    #def test_multiplicacionVectores(self):
+    def test_inversaMatriz(self):
+        ans1 = calculadora.inversaMatriz([[(1,1),(2,-3)],[(4,2),(2,4)]])
+        ans2 = calculadora.inversaMatriz([[(1,1),(0,3)],[(-1,2),(-2,4)]])
+        self.assertEqual(ans1,[[(-1,-1),(-2,3)],[(-4,-2),(-2,-4)]])
+        self.assertEqual(ans2,[[(-1,-1),(0,-3)],[(1,-2),(2,-4)]])
 
-    #def test_sumaMatrices(self):
+    def multiplicacionEscalarMatrices(self):
+        ans1 = calculadora.multiplicacionEscalarMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],(1,1))
+        ans2 = calculadora.multiplicacionEscalarMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],(2,3))
+        self.assertEqual(ans1,[[(0,2),(5,-1)],[(2,6),(-2,6)]])
+        self.assertEqual(ans2,[[(-1,5),(13,0)],[(2,16),(-8,14)]])
 
-    #def test_inversaMatriz(self):
+    def test_traspuesta(self):
+        ans1 = calculadora.traspuesta([[(1,1),(2,-3)],[(4,2),(2,4)]])
+        ans2 = calculadora.traspuesta([[(1,1),(2,-3),(5,4)],[(4,2),(2,4),(4,5)]])
+        self.assertEqual(ans1,[[(1,1),(4,2)],[(2,-3),(2,4)]])
+        self.assertEqual(ans2,[[(1,1),(4,2)],[(2,-3),(2,4)],[(5,4),(4,5)]])
 
-    #def multiplicacionEscalarMatrices(self):
+    def test_conjugadoVector(self):
+        ans1 = calculadora.conjugadoVector([(1,2),(1,-2),(1,5)])
+        ans2 = calculadora.conjugadoVector([(1,3),(3,2),(3,-9)])
+        self.assertEqual(ans1,[(1,-2),(1,2),(1,-5)])
+        self.assertEqual(ans2,[(1,-3),(3,-2),(3,9)])
 
-    #def test_traspuesta(self):
+        
 
-    #def test_conjugadoVector(self):
+    def test_conjugadoMatriz(self):
+        ans1 = calculadora.conjugadoMatriz([[(1,2),(2,1)],[(1,-2),(2,-3)],[(3,4),(3,-1)]])
+        ans2 = calculadora.conjugadoMatriz([[(1,1),(2,2),(1,1)],[(2,2),(3,-3),(2,3)]])
+        self.assertEqual(ans1,[[(1,-2),(2,-1)],[(1,2),(2,3)],[(3,-4),(3,1)]])
+        self.assertEqual(ans2,[[(1,-1),(2,-2),(1,-1)],[(2,-2),(3,3),(2,-3)]])
 
-    #def test_conjugadoMatriz(self):
+    def test_matrizAdjunta(self):
+        ans1 = calculadora.matrizAdjunta([[(1,1),(2,-3)],[(4,2),(2,4)]])
+        ans2 = calculadora.matrizAdjunta([[(1,1),(2,3)],[(4,2),(1,4)],[(1,0),(3,-4)]])
+        self.assertEqual(ans1,[[(1,-1),(4,-2)],[(2,3),(2,-4)]])
+        self.assertEqual(ans2,[[(1,-1),(4,-2),(1,0)],[(2,-3),(1,-4),(3,4)]])
 
-    #def test_matrizAdjunta(self):
+    def test_productoVectorMatriz(self):
+        ans1 = calculadora.productoVectorMatriz([(1,1),(2,3)],[[(1,2),(2,1)],[(3,3),(1,-2)]])
+        ans2 = calculadora.productoVectorMatriz([(0,0),(0,0)],[[(1,2),(2,1)],[(3,3),(1,-2)]])
+        self.assertEqual(ans1,[(0,11),(8,5)])
+        self.assertEqual(ans2,[(0,0),(0,0)])
 
-    #def test_productoVectorMatriz(self):
+    def test_productoInternoVectores(self):
+        ans1 = calculadora.productoInternoVectores([(1,0),(0,1),(1,-3)],[(2,1),(0,1),(2,0)])
+        ans2 = calculadora.productoInternoVectores([(1,-2),(-2,1),(4,3)],[(2,1),(1,-3),(3,0)])
+        self.assertEqual(ans1,(5,7))
+        self.assertEqual(ans2,(7,1))
 
-    #def test_productoInternoVectores(self):
+    def test_normaMatriz(self):
+        self.assertEqual(calculadora.normaVector([(3,0),(-6,0),(-2,0)]),7.0)
+        self.assertEqual(calculadora.normaVector([(2,0),(4,0)]),4.47213595499958)
+        self.assertEqual(calculadora.normaVector([(4,0),(3,0)]),5.0)
 
-    #def test_normaMatriz(self):
-
-    #def test_distanciaVectores(self):
+    def test_distanciaVectores(self):
+        ans1 = calculadora.distanciaVectores([(0,0),(0,0)],[(1,1),(2,4)])
+        ans2 = calculadora.distanciaVectores([(1,2),(2,5)],[(2,6),(5,3)])
+        self.assertEqual(ans1,4.69041575982343)
+        self.assertEqual(ans2,5.477225575051661)
+        
 
     
     def test_esUnitaria(self):
@@ -96,9 +154,18 @@ class TestCalculadora(unittest.TestCase):
         self.assertTrue(calculadora.esHermitiana([[(-1,0),(0,-1)],[(0,1),(1,0)]]))
         self.assertTrue(calculadora.esUnitaria([[(0,0),(1,0)],[(1,0),(0,0)]]))
 
-    #def test_productoTensorVectores(self):
+    def test_productoTensorVectores(self):
+        ans1 = calculadora.productoTensorVectores([(-1,0),(2,0),(5,0)],[(4,0),(-3,0)])
+        ans2 = calculadora.productoTensorVectores([(-1,1),(2,-1),(5,1)],[(4,1),(3,0)])
+        self.assertEqual(ans1,[(-4,0),(3,0),(8,0),(-6,0),(20,0),(-15,0)])
+        self.assertEqual(ans2,[(-5,3),(-3,3),(9,-2),(6,-3),(19,9),(15,3)])
+        
 
-    #def test_productoTensorMatrices(self):
+    def test_productoTensorMatrices(self):
+        ans1 = calculadora.productoTensorMatrices([[(1,0),(2,0)],[(0,0),(1,0)]],[[(3,0),(2,0)],[(-1,0),(0,0)]])
+        ans2 = calculadora.productoTensorMatrices([(0,0),(0,0)],[[(1,0),(2,0)],[(3,0),(2,0)],[(1,1),(2,2)]])
+        self.assertEqual(ans1,[[(3,0),(2,0),(6,0),(4,0)],[(-1,0),(0,0),(-2,0),(0,0)],[(0,0),(0,0),(3,0),(2,0)],[(0,0),(0,0),(-1,0),(0,0)]])
+        self.assertEqual(ans2,[[(0,0),(0,0),(0,0),(0,0)],[(0,0),(0,0),(0,0),(0,0)],[(0,0),(0,0),(0,0),(0,0)]])
 
 
 if __name__ == "__main__":
