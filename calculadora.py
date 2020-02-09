@@ -193,18 +193,21 @@ def multiVectores(a,b):
 
 
 """ Funcion que multiplica dos matrices """
-def multiplicarMatrices(a,b):
-    ans = []
-    for i in range(len(a)):
-       fila = []
-       for j in range(len(b[0])):
-           temp = (0,0)
-           for k in range(len(b)):
-               mult = multiplicacion(a[i][k],b[k][j])
-               temp = suma(mult,temp)
-           fila.append(temp)
-       ans.append(fila)
-    return ans
+def productoMatrices(a,b):
+    if(len(a[0])!=len(b)):
+        return "Las dimensiones de las matrices no son correctas"
+    else:
+        ans = []
+        for i in range(len(a)):
+           fila = []
+           for j in range(len(b[0])):
+               temp = (0,0)
+               for k in range(len(b)):
+                   mult = multiplicacion(a[i][k],b[k][j])
+                   temp = suma(mult,temp)
+               fila.append(temp)
+           ans.append(fila)
+        return ans
 
 def productoVectorMatriz(a,b):
     vec = diferenciaVectMatriz(a,b)[0]
@@ -236,7 +239,7 @@ def distanciaVectores(a,b):
 
 def esUnitaria(a):
     adjunta = matrizAdjunta(a)
-    ans = multiplicarMatrices(a,adjunta)
+    ans = productoMatrices(a,adjunta)
     for i in range(len(a)):
         for j in range(len(a[0])):
             num = ans[i][j]
