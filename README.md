@@ -26,7 +26,7 @@ La librearía de números complejos tiene las siguientes funciones:
   ángulo(su valor debe ir en grados).
 - Pasar de representación Cartesiana a Polar: Se ingresa el número con su representación cartesiana en forma de tupla.
   La primera posición de la tupla es la coordenada X y la segunda posoción es la coordenada Y del punto. 
- -Fase: Se ingresa el número en forma de tupla. El resultado es la fase del número.   
+- Fase: Se ingresa el número en forma de tupla. El resultado es la fase del número.   
 
 ### Operaciones con Vectores y Matrices Complejas
 - Suma de vectores complejos: Se ingresan los dos vectores que se van a sumar en forma de lista.
