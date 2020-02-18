@@ -57,6 +57,10 @@ Para representar la matriz de de númneros complejos, la librería usa la estruc
 - **Producto tensor de dos vectores:** Se ingresan los dos vectores en forma de listas de números complejos. El resultado es el producto tensor de los dos vectores, de tipo vector complejo.
 - **Producto tensor de dos matrices:** Se ingresan las dos matrices  en forma de lista de listas de números complejos. El resultado es el producto tensor de las dos matrices, de tipo matriz compleja.
 
+## Pruebas 
+Esta librearía tiene un archivo .py donde puede probar las operaciones que hay en ella. Si desea hacer pruebas solo debe ingresar al archivo  test.py las pruebas que quiera, solo con la condición que cumplan el formato de UnitTest de python. Luego  correrlas en un compilador de este lenguaje y verá el resultado de las pruebas..
+
+
 ## Autor:
 
 Andrés Guillermo Rocha Méndez
