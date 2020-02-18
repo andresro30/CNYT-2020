@@ -45,8 +45,8 @@ Para representar la matriz de de númneros complejos, la librería usa la estruc
 - **Traspuesta de una matriz:** Se ingresa la matriz en forma de lista de listas de números complejos. El resultado es la matriz       traspuesta.
 - **Conjugado de un vector complejo:** Se ingresa el vector en forma de lista de números complejos. El resultado es el vector         conjugado.
 - **Conjugada de una matriz compleja:** Se ingresa la matriz en forma de lista de listas de números complejos. El resultado es la     conjugada de la matriz.
-- **Adjunta de un vector complejo: Se ingresa el vector en forma de lista de números complejos. El resultado es el vector adjunto.
-- Adjunta de una matriz compleja: Se ingresa la matriz en forma de lista de listas de números complejos. El resultado es la       matriz adjunta.
+- **Adjunta de un vector complejo:** Se ingresa el vector en forma de lista de números complejos. El resultado es el vector adjunto.
+- **Adjunta de una matriz compleja:** Se ingresa la matriz en forma de lista de listas de números complejos. El resultado es la       matriz adjunta.
 - **Producto de dos matrices complejos:** Se ingresa las dos matrices en forma de lista de listas de números complejos, las matrices   deben tener dimensiones compatibles. El resultado es el producto de las dos matrices.
 - **Producto de un vector y una matriz compleja:** Se ingresa el vector en forma de lista de números complejos y la matriz en forma   de lista de listas de números complejos. El resultado es un vector complejo.
 - **Producto interno de dos vectores complejos:** Se ingresan los dos vectores complejos en forma de lista de números complejos. El   resultado es un número complejo.
