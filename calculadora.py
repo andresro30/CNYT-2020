@@ -61,7 +61,7 @@ def polarCartesiano(a):
 
 def cartesianoPolar(a):
     v1 = (a[0]**2 + a[1]**2)**(1/2)
-    v2 = gradRadi(math.atan(a[1]/abs(a[0])))
+    v2 = gradRadi(math.atan2(a[1],abs(a[0])))
     return(v1,v2)
 
 def fase(a):
@@ -303,7 +303,7 @@ def gradRadi(num):
 
 
 """
-def main():        
+def main():  
 main()
 """
 
