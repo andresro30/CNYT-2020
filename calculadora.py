@@ -189,6 +189,12 @@ def multiVectores(a,b):
     ans = (0,0) 
     for i in range(len(a)):
         ans = suma(ans,multiplicacion(a[i],b[i]))
+    return ans
+
+def multiVectoresReales(a,b):
+    ans = 0
+    for i in range(len(a)):
+        ans+=a[i]*b[i]
     return ans  
 
 
@@ -209,6 +215,23 @@ def productoMatrices(a,b):
            ans.append(fila)
         return ans
 
+
+def productoMatricesReales(a,b):
+    if(len(a[0])!=len(b)):
+        return "Las dimensiones de las matrices no son correctas"
+    else:
+        ans = []
+        for i in range(len(a)):
+           fila = []
+           for j in range(len(b[0])):
+               temp = 0
+               for k in range(len(b)):
+                   mult = a[i][k]*b[k][j]
+                   temp+=mult
+               fila.append(temp)
+           ans.append(fila)
+        return ans
+
 def productoVectorMatriz(a,b):
     vec = diferenciaVectMatriz(a,b)[0]
     ma = diferenciaVectMatriz(a,b)[1]
@@ -218,6 +241,17 @@ def productoVectorMatriz(a,b):
         ans = []
         for i in range(len(ma)):
             ans.append(multiVectores(vec,ma[i]))
+        return ans
+
+def productoVectorMatrizReal(a,b):
+    vec = a
+    ma = b
+    if(len(ma[0])!=len(vec)):
+        return "Las dimension de la matriz o del vector es incorrecta"
+    else:
+        ans = []
+        for i in range(len(ma)):
+            ans.append(multiVectoresReales(vec,ma[i]))
         return ans
 
 
