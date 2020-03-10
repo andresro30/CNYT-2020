@@ -1,5 +1,5 @@
 import unittest
-import calculadora
+import calculadora,simulaciones
 import math
 
 
@@ -168,5 +168,34 @@ class TestCalculadora(unittest.TestCase):
         self.assertEqual(ans2,[[(0,0),(0,0),(0,0),(0,0)],[(0,0),(0,0),(0,0),(0,0)],[(0,0),(0,0),(0,0),(0,0)]])
 
 
+    """  Test de Simulaciones """
+
+    def test_canicasBooleanas(self):
+        estado = [6,2,1,5,3,10]
+        inicial = [[0,0,0,0,0,0],[0,0,0,0,0,0],[0,1,0,0,0,1],[0,0,0,1,0,0],[0,0,1,0,0,0],[1,0,0,0,1,0]]
+        ans = simulaciones.canicasBooleanas(estado,inicial,1)
+        ans2 = simulaciones.canicasBooleanas(estado,inicial,2)
+        ans3 = simulaciones.canicasBooleanas(estado,inicial,5)
+        self.assertEqual(ans,[0,0,12,5,1,9])
+        self.assertEqual(ans2,[0,0,9,5,12,1])
+        self.assertEqual(ans3,[0,0,9,5,12,1])
+
+    def test_rendijaProbabilistica(self):
+        unmedio = 1/2
+        untercio = 1/3
+        inicial = [[0,0,0,0,0,0,0,0],[unmedio,0,0,0,0,0,0,0],[unmedio,0,0,0,0,0,0,0],[0,untercio,0,1,0,0,0,0],[0,untercio,0,0,1,0,0,0],
+           [0,untercio,untercio,0,0,1,0,0],[0,0,untercio,0,0,0,1,0],[0,0,untercio,0,0,0,0,1]]
+
+        ans = simulaciones.rendijaProbabilistica(2,8,inicial,[1,0,0,0,0,0,0,0])
+        ans3 = simulaciones.rendijaProbabilistica(2,10,inicial,[1,0,0,0,0,0,0,0])
+
+        self.assertEqual(ans,[0.0, 0.0, 0.0, 0.16666666666666666, 0.16666666666666666, 0.3333333333333333, 0.16666666666666666, 0.16666666666666666])
+        self.assertEqual(ans3,"La matriz de probabilidades debe ser proporcional a los objetivos")
+
+    def test_rendijaCuantica(self):
+        estado =  mat = [[(0,0),(0,0),(1,2),(1,2)],[(0,0),(1,2),(0,0),(1,2)],[(0,0),(1,2),(1,2),(0,0)],[(0,0),(0,0),(1,2),(1,2)]]
+        ans = simulaciones.rendijaCuantica(2,4,estado,[(0,0),(1,2),(1,2),(0,0)])
+        self.assertEqual(ans,[(451, -418), (451, -418), (410, -380), (451, -418)])
+        
 if __name__ == "__main__":
     unittest.main()
