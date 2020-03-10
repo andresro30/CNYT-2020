@@ -197,5 +197,20 @@ class TestCalculadora(unittest.TestCase):
         ans = simulaciones.rendijaCuantica(2,4,estado,[(0,0),(1,2),(1,2),(0,0)])
         self.assertEqual(ans,[(451, -418), (451, -418), (410, -380), (451, -418)])
         
+
+    """ Test Cuantico de una partícula"""
+
+    def test_probabilidad(self):
+        vector = [(2,1),(-1,2),(0,1),(1,0),(3,-1),(2,0),(0,-2),(-2,1),(1,-3),(0,-1)]
+        ans = calculadora.probabilidad(7,vector)
+        self.assertEqual(ans,10.869565217391305)
+
+    def test_amplitudTransicion(self):
+        dec = 0.7071067811865475
+        vector = [(dec,0),(0,dec)]
+        matriz = [[(2,0),(1,1)],[(1,-1),(3,0)]]
+        ans = calculadora.amplitudTransicion(matriz,vector)
+        self.assertEqual(ans,(1.4999999999999996, 0.0))
+
 if __name__ == "__main__":
     unittest.main()

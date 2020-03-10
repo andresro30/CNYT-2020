@@ -68,7 +68,9 @@ def fase(a):
     v1 = math.atan2(a[1],a[0])
     return (v1,"")
 
-
+def norma(a):
+    ans = a[0]**2 + a[1]**2
+    return ans
 
 
 """ Funciones de apoyo para operaciones con Vectores y matrices """
@@ -312,7 +314,7 @@ def productoTensorMatrices(a,b):
             ans.append(productoTensorVectores(a[i],b[j]))
     return ans
 
- 
+
 def prettyPrinting(c):
     if(c[1]==""):
         print(round(c[0],2))
@@ -335,10 +337,25 @@ def radGrados(num):
 def gradRadi(num):
     return (num*180)/math.pi
 
+""" Sistema Cuantico de una partícula"""
+
+def probabilidad(pos,vector):
+    a = norma(vector[pos])
+    b = 0
+    for i in range(len(vector)):
+        b+= norma(vector[i])
+    prob = (a/b)*100
+    return prob
+
+def amplitudTransicion(matriz,vector):
+    a = productoVectorMatriz(vector,matriz)
+    conjugado = conjugadoVector(a)
+    ans = multiVectores(conjugado,vector)
+    return ans 
+    
 
 """
-def main():  
+def main():
 main()
 """
-
 
